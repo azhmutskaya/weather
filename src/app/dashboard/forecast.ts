@@ -1,4 +1,4 @@
-export class DailyForecast {
+export interface DailyForecast {
   temp: number;
   icon: string;
   description: string;
@@ -10,19 +10,21 @@ export class DailyForecast {
   };
 }
 
-export class WeeklyForecast {
+export interface ListItem {
+  time: number;
+  temp: number;
+  icon: string;
+  description: string;
+  isDay: boolean;
+  details: {
+    wind: number;
+    pressure: number;
+    humidity: number;
+  };
+}
+
+export interface WeeklyForecast {
   date: number;
   dateTxt: string;
-  list: {
-    time: number;
-    temp: number;
-    icon: string;
-    description: string;
-    isDay: boolean;
-    details: {
-      wind: number;
-      pressure: number;
-      humidity: number;
-    };
-  }[];
+  list: ListItem[];
 }

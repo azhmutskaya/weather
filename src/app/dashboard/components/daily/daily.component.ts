@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherService } from '../../../services/weather.service';
 import { DailyForecast } from '../../forecast';
 import { ActivatedRoute } from '@angular/router';
+import { WeatherService } from '../../services/weather.service';
 
 @Component({
   selector: 'app-daily',
