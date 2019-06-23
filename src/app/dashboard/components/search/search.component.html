@@ -1,15 +1,14 @@
 <div class="dashboard-search">
-  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
     <div class="dashboard-search__input">
-      <input class="dashboard-search__field" type="text" [class.dashboard-search__field--filled]="searchForm.controls.city.value.trim()" formControlName="city">
-      <label class="dashboard-search__label">
-        <div class="dashboard-search__label-content">City</div>
-      </label>
-      <button class="dashboard-search__submit" type="submit">
-        <svg focusable="false" viewBox="0 0 512 512">
-          <use xlink:href="#loupe"></use>
-        </svg>
-      </button>
+            <input class="dashboard-search__field" type="text"
+                   [class.dashboard-search__field--filled]="city.value.trim()" [formControl]="city">
+        <label class="dashboard-search__label">
+            <div class="dashboard-search__label-content">City</div>
+        </label>
+        <button class="dashboard-search__submit" type="submit">
+            <svg focusable="false" viewBox="0 0 512 512">
+                <use xlink:href="#loupe"></use>
+            </svg>
+        </button>
     </div>
-  </form>
 </div>

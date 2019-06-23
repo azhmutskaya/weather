@@ -1,44 +1,59 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl } from '@angular/forms';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { LocationService } from '../../services/location.service';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+import { map, filter, distinctUntilChanged, debounceTime } from 'rxjs/operators';
+import { Subscription } from 'rxjs';
 
 @Component({
-  selector: 'app-search',
-  templateUrl: './search.component.html',
-  styleUrls: ['./search.component.scss']
+    selector: 'app-search',
+    templateUrl: './search.component.html',
+    styleUrls: ['./search.component.scss']
 })
 
-export class SearchComponent implements OnInit {
-  cityValue: string;
-  searchForm = new FormGroup({
-    city: new FormControl('')
-  });
+export class SearchComponent implements OnInit, OnDestroy {
+    public city = new FormControl('');
 
-  constructor(
-    private locationService: LocationService,
-    private router: Router
-  ) {}
+    private subscription: Subscription;
 
-  ngOnInit() {
-    this.getLocation();
-  }
+    constructor(
+        private locationService: LocationService,
+        private router: Router,
+        private route: ActivatedRoute
+    ) {
+    }
 
-  getLocation(): void {
-    this.locationService.getLocation().subscribe((data: any) => {
-      this.cityValue = data.city;
-      this.updateСity();
-      this.router.navigate([], { queryParams: { city: this.cityValue } });
-    });
-  }
+    ngOnInit() {
+        this.subscription = this.city.valueChanges.pipe(
+            map((value: string) => value.trim()),
+            filter((value: string) => !!value.length),
+            debounceTime(500),
+            distinctUntilChanged((x: string, y: string) => x === y)
+        ).subscribe((value: string) => {
+            console.log(value);
+            this.router.navigate([], {queryParams: {city: value}});
+        });
 
-  updateСity(): void {
-    this.searchForm.setValue({city: this.cityValue});
-  }
+        this.route.queryParams.subscribe((data: any) => {
+            data.city
+                ? this.updateСity(data.city)
+                : this.getLocation();
+        });
+    }
 
-  onSubmit(): void {
-    this.cityValue = this.searchForm.value.city.trim();
-    this.router.navigate([], { queryParams: { city: this.cityValue } });
-  }
+    ngOnDestroy() {
+        this.subscription.unsubscribe();
+    }
 
+    private getLocation(): void {
+        this.locationService.getLocation()
+            .subscribe((data: any) => {
+                this.updateСity(data.city);
+                this.router.navigate([], {queryParams: {city: data.city}});
+            });
+    }
+
+    private updateСity(cityValue: string): void {
+        this.city.setValue(cityValue);
+    }
 }

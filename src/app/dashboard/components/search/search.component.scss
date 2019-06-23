@@ -94,6 +94,7 @@
     }
   }
   &__submit {
+    pointer-events: none;
     position: absolute;
     width: 40px;
     height: 40px;
