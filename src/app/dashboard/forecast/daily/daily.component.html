@@ -1,0 +1,53 @@
+<div *ngIf="isFound; else notFound" class="daily-forecast">
+  <div class="daily-forecast__main">
+    <div class="daily-forecast__img">
+      <svg focusable="false" viewBox="0 0 512 512">
+        <use [attr.xlink:href]="dailyForecast.icon"></use>
+      </svg>
+    </div>
+    <div class="daily-forecast__temp">
+      {{ dailyForecast.temp | kelvinToCelsius }}
+    </div>
+  </div>
+  <div class="daily-forecast__details">
+    <div class="daily-forecast__item daily-forecast__item--main">
+      <div class="daily-forecast__descr">
+        {{ dailyForecast.description }}
+      </div>
+    </div>
+    <div class="daily-forecast__item">
+      <div class="daily-forecast__title">
+        <svg focusable="false" viewBox="0 0 512 512">
+          <use xlink:href="#wind"></use>
+        </svg>
+      </div>
+      <div class="daily-forecast__descr">
+        {{ dailyForecast.details.wind }} m/s
+      </div>
+    </div>
+    <div class="daily-forecast__item">
+      <div class="daily-forecast__title">
+        <svg focusable="false" viewBox="0 0 512 512">
+          <use xlink:href="#humidity"></use>
+        </svg>
+      </div>
+      <div class="daily-forecast__descr">
+        {{ dailyForecast.details.humidity }} %
+      </div>
+    </div>
+    <div class="daily-forecast__item">
+      <div class="daily-forecast__title">
+        <svg focusable="false" viewBox="0 0 512 512">
+          <use xlink:href="#pressure"></use>
+        </svg>
+      </div>
+      <div class="daily-forecast__descr">
+        {{ dailyForecast.details.pressure }} hpa
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #notFound>
+  <app-not-found [error]="error"></app-not-found>
+</ng-template>

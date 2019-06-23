@@ -1,0 +1,18 @@
+<div class="dashboard">
+  <div class="dashboard__header">
+    <div class="dashboard__logo">
+      <svg focusable="false" viewBox="0 0 512 512">
+        <use xlink:href="#logo"></use>
+      </svg>
+    </div>
+    <div class="dashboard__main">
+      <app-search></app-search>
+    </div>
+  </div>
+
+  <app-navigation></app-navigation>
+
+  <div class="dashboard__forecast">
+    <router-outlet></router-outlet>
+  </div>
+</div>

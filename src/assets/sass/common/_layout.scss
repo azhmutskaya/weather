@@ -1,0 +1,19 @@
+html {
+  height: 100%;
+}
+
+body {
+  font-family: $font-primary;
+  font-size: 18px;
+  line-height: 24px;
+  color: $clr-font;
+  -webkit-overflow-scrolling: touch;
+  height: 100%;
+  background: $clr-bg;
+  padding: 20px;
+}
+
+a, input, button {
+  font-family: $font-primary;
+  transition: all 0.3s;
+}

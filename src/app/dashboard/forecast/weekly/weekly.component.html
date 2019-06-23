@@ -1,0 +1,65 @@
+<div *ngIf="isFound; else notFound" class="weekly-forecast">
+  <div class="weekly-forecast__list">
+    <div *ngFor="let day of weeklyForecast; let i = index" class="weekly-forecast__item">
+      <div *ngIf="i !== 0; else today" class="weekly-forecast__date">
+        {{ day.date | date: 'dd/MM' }}
+      </div>
+      <ng-template #today>
+        <div class="weekly-forecast__date">
+          Today
+        </div>
+      </ng-template>
+      <div class="weekly-forecast__sublist">
+        <div *ngFor="let item of day.list" class="weekly-forecast__subitem">
+          <div class="weekly-forecast__time">
+            {{ item.time | date:'HH:00' }}
+          </div>
+          <div class="weekly-forecast__icon">
+            <svg focusable="false" viewBox="0 0 512 512">
+              <use [attr.xlink:href]="item.icon"></use>
+            </svg>
+          </div>
+          <div class="weekly-forecast__temp">
+            {{ item.temp | kelvinToCelsius }}
+          </div>
+          <div class="weekly-forecast__description">
+            {{ item.description }}
+          </div>
+          <div class="weekly-forecast__block">
+            <div class="weekly-forecast__title">
+              <svg focusable="false" viewBox="0 0 512 512">
+                <use xlink:href="#wind"></use>
+              </svg>
+            </div>
+            <div class="weekly-forecast__descr">
+              {{ item.details.wind }} m/s
+            </div>
+          </div>
+          <div class="weekly-forecast__block">
+            <div class="weekly-forecast__title">
+              <svg focusable="false" viewBox="0 0 512 512">
+                <use xlink:href="#humidity"></use>
+              </svg>
+            </div>
+            <div class="weekly-forecast__descr">
+              {{ item.details.humidity }} %
+            </div>
+          </div>
+          <div class="weekly-forecast__block">
+            <div class="weekly-forecast__title">
+              <svg focusable="false" viewBox="0 0 512 512">
+                <use xlink:href="#pressure"></use>
+              </svg>
+            </div>
+            <div class="weekly-forecast__descr">
+              {{ item.details.pressure }} hpa
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #notFound>
+  <app-not-found [error]="error"></app-not-found>
+</ng-template>

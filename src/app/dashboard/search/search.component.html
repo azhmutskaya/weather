@@ -1,0 +1,15 @@
+<div class="dashboard__search">
+  <form [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+    <div class="input">
+      <input class="input__field" type="text" [class.input__field--filled]="searchForm.controls.city.value.trim()" formControlName="city">
+      <label class="input__label">
+        <div class="input__label-content">City</div>
+      </label>
+      <button class="submit" type="submit">
+        <svg focusable="false" viewBox="0 0 512 512">
+          <use xlink:href="#loupe"></use>
+        </svg>
+      </button>
+    </div>
+  </form>
+</div>
