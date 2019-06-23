@@ -1,0 +1,71 @@
+@import '../../../../assets/sass/styles';
+
+.daily-forecast {
+  &__main {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  &__img {
+    svg {
+      width: 140px;
+      height: 140px;
+      @include breakpoint($mq-mobile-medium) {
+        width: 100px;
+        height: 100px;
+      }
+    }
+  }
+  &__temp {
+    font-size: 36px;
+    padding-left: 20px;
+    @include breakpoint($mq-mobile-medium) {
+      font-size: 28px;
+    }
+  }
+  &__details {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 600px;
+    margin: 40px auto 0;
+    justify-content: space-between;
+    @include breakpoint($mq-mobile-medium) {
+      max-width: 360px;
+      margin-top: 10px;
+    }
+  }
+  &__item {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    &--main {
+      @include breakpoint($mq-mobile-medium) {
+        width: 100%;
+        padding-bottom: 20px;
+        justify-content: center;
+      }
+      .daily-forecast__descr {
+        padding-left: 0;
+        text-transform: lowercase;
+      }
+    }
+  }
+  &__title {
+    svg {
+      width: 40px;
+      height: 40px;
+      @include breakpoint($mq-mobile-medium) {
+        width: 28px;
+        height: 28px;
+      }
+    }
+  }
+  &__descr {
+    padding-left: 10px;
+    @include breakpoint($mq-mobile-medium) {
+      font-size: 14px;
+      padding-left: 4px;
+    }
+  }
+}

@@ -6,7 +6,7 @@ import { WeatherService } from '../../services/weather.service';
 @Component({
   selector: 'app-daily',
   templateUrl: './daily.component.html',
-  styleUrls: ['./../../dashboard.component.scss']
+  styleUrls: ['./daily.component.scss']
 })
 export class DailyComponent implements OnInit {
   isFound = false;
