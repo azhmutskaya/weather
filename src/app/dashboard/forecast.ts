@@ -3,11 +3,9 @@ export interface DailyForecast {
   icon: string;
   description: string;
   isDay: boolean;
-  details: {
-    wind: number;
-    pressure: number;
-    humidity: number;
-  };
+  wind: number;
+  pressure: number;
+  humidity: number;
 }
 
 export interface ListItem {

@@ -17,11 +17,9 @@ export class DailyComponent implements OnInit {
     icon: null,
     description: null,
     isDay: null,
-    details: {
-      wind: null,
-      pressure: null,
-      humidity: null,
-    }
+    wind: null,
+    pressure: null,
+    humidity: null,
   };
 
   constructor(
@@ -46,9 +44,9 @@ export class DailyComponent implements OnInit {
 
         this.dailyForecast.temp = data.main.temp;
         this.dailyForecast.description = data.weather[0].description;
-        this.dailyForecast.details.wind = data.wind.speed;
-        this.dailyForecast.details.pressure = data.main.pressure;
-        this.dailyForecast.details.humidity = data.main.humidity;
+        this.dailyForecast.wind = data.wind.speed;
+        this.dailyForecast.pressure = data.main.pressure;
+        this.dailyForecast.humidity = data.main.humidity;
 
         switch (data.weather[0].id) {
           case 800:
