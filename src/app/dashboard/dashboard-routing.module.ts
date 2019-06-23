@@ -3,11 +3,15 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { DailyComponent } from './forecast/daily/daily.component';
 import { WeeklyComponent } from './forecast/weekly/weekly.component';
+import { DashboardComponent } from './dashboard.component';
 
 const dashboardRoutes: Routes = [
-  { path: '', redirectTo: '/daily', pathMatch: 'full' },
-  { path: 'daily', component: DailyComponent },
-  { path: 'weekly', component: WeeklyComponent },
+  {
+    path: '', component: DashboardComponent, children: [
+      { path: 'daily', component: DailyComponent },
+      { path: 'weekly', component: WeeklyComponent }
+    ]
+  }
 ];
 
 @NgModule({
