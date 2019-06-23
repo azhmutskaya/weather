@@ -1,12 +1,12 @@
 export interface DailyForecast {
-  temp: number;
-  icon: string;
-  description: string;
-  isDay: boolean;
-  details: {
-    wind: number;
-    pressure: number;
-    humidity: number;
+  temp?: number;
+  icon?: string;
+  description?: string;
+  isDay?: boolean;
+  details?: {
+    wind?: number;
+    pressure?: number;
+    humidity?: number;
   };
 }
 
