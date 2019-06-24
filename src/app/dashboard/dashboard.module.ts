@@ -13,7 +13,7 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { DailyComponent } from './components/daily/daily.component';
 import { WeeklyComponent } from './components/weekly/weekly.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-
+import { IconSpriteModule } from 'ng-svg-icon-sprite';
 
 @NgModule({
   declarations: [
@@ -28,7 +28,8 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    DashboardRoutingModule
+    DashboardRoutingModule,
+    IconSpriteModule.forRoot({ path: 'assets/images/svg-sprite.svg' })
   ]
 })
 export class DashboardModule { }

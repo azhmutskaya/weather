@@ -15,9 +15,7 @@
             {{ item.time | date:'HH:00' }}
           </div>
           <div class="weekly-forecast__icon">
-            <svg focusable="false" viewBox="0 0 512 512">
-              <use [attr.xlink:href]="item.icon"></use>
-            </svg>
+            <svg-icon-sprite [src]="item.icon" [classes]="'svg-icon'"></svg-icon-sprite>
           </div>
           <div class="weekly-forecast__temp">
             {{ item.temp | kelvinToCelsius }}
@@ -27,9 +25,7 @@
           </div>
           <div class="weekly-forecast__block">
             <div class="weekly-forecast__title">
-              <svg focusable="false" viewBox="0 0 512 512">
-                <use xlink:href="#wind"></use>
-              </svg>
+              <svg-icon-sprite [src]="'wind'" [classes]="'svg-icon'"></svg-icon-sprite>
             </div>
             <div class="weekly-forecast__descr">
               {{ item.wind }} m/s
@@ -37,9 +33,7 @@
           </div>
           <div class="weekly-forecast__block">
             <div class="weekly-forecast__title">
-              <svg focusable="false" viewBox="0 0 512 512">
-                <use xlink:href="#humidity"></use>
-              </svg>
+              <svg-icon-sprite [src]="'humidity'" [classes]="'svg-icon'"></svg-icon-sprite>
             </div>
             <div class="weekly-forecast__descr">
               {{ item.humidity }} %
@@ -47,9 +41,7 @@
           </div>
           <div class="weekly-forecast__block">
             <div class="weekly-forecast__title">
-              <svg focusable="false" viewBox="0 0 512 512">
-                <use xlink:href="#pressure"></use>
-              </svg>
+              <svg-icon-sprite [src]="'pressure'" [classes]="'svg-icon'"></svg-icon-sprite>
             </div>
             <div class="weekly-forecast__descr">
               {{ item.pressure }} hpa

@@ -1,9 +1,7 @@
 <div *ngIf="isFound; else notFound" class="daily-forecast">
   <div class="daily-forecast__main">
     <div class="daily-forecast__img">
-      <svg focusable="false" viewBox="0 0 512 512">
-        <use [attr.xlink:href]="dailyForecast.icon"></use>
-      </svg>
+        <svg-icon-sprite [src]="dailyForecast.icon" [classes]="'svg-icon'"></svg-icon-sprite>
     </div>
     <div class="daily-forecast__temp">
       {{ dailyForecast.temp | kelvinToCelsius }}
@@ -17,9 +15,7 @@
     </div>
     <div class="daily-forecast__item">
       <div class="daily-forecast__title">
-        <svg focusable="false" viewBox="0 0 512 512">
-          <use xlink:href="#wind"></use>
-        </svg>
+        <svg-icon-sprite [src]="'wind'" [classes]="'svg-icon'"></svg-icon-sprite>
       </div>
       <div class="daily-forecast__descr">
         {{ dailyForecast.wind }} m/s
@@ -27,9 +23,7 @@
     </div>
     <div class="daily-forecast__item">
       <div class="daily-forecast__title">
-        <svg focusable="false" viewBox="0 0 512 512">
-          <use xlink:href="#humidity"></use>
-        </svg>
+        <svg-icon-sprite [src]="'humidity'" [classes]="'svg-icon'"></svg-icon-sprite>
       </div>
       <div class="daily-forecast__descr">
         {{ dailyForecast.humidity }} %
@@ -37,9 +31,7 @@
     </div>
     <div class="daily-forecast__item">
       <div class="daily-forecast__title">
-        <svg focusable="false" viewBox="0 0 512 512">
-          <use xlink:href="#pressure"></use>
-        </svg>
+        <svg-icon-sprite [src]="'pressure'" [classes]="'svg-icon'"></svg-icon-sprite>
       </div>
       <div class="daily-forecast__descr">
         {{ dailyForecast.pressure }} hpa

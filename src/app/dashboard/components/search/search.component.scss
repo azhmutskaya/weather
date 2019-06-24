@@ -40,8 +40,12 @@
         }
       }
       & ~ .dashboard-search__submit {
-        svg {
-          fill: $clr-white;
+        ::ng-deep {
+          .svg-icon {
+            use {
+              fill: $clr-white;
+            }
+          }
         }
       }
     }
@@ -107,13 +111,18 @@
       top: 0;
       right: 0;
     }
-    svg {
-      fill: $clr-primary;
-      width: 30px;
-      height: 30px;
-      @include breakpoint($mq-mobile-medium) {
-        width: 24px;
-        height: 24px;
+    &::ng-deep {
+      .svg-icon {
+        width: 30px;
+        height: 30px;
+        @include breakpoint($mq-mobile-medium) {
+          width: 24px;
+          height: 24px;
+        }
+        use {
+          fill: $clr-primary;
+          transition: all .3s;
+        }
       }
     }
   }

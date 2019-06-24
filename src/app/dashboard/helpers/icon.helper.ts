@@ -1,21 +1,21 @@
 export const iconHelper = (id: number, isDay: boolean): string => {
   switch (id) {
     case 800:
-      return isDay ? '#sun' : '#moon';
+      return isDay ? 'sun' : 'moon';
     case 801:
-      return isDay ? '#cloudy1' : '#cloudy3';
+      return isDay ? 'cloudy1' : 'cloudy3';
     case 802:
-      return isDay ? '#cloudy2' : '#cloudy3';
+      return isDay ? 'cloudy2' : 'cloudy3';
     case 803:
-      return '#clouds1';
+      return 'clouds1';
     case 804:
-      return '#clouds2';
+      return 'clouds2';
     case 500:
     case 501:
     case 502:
     case 503:
     case 504:
-      return '#rain1';
+      return 'rain1';
     case 300:
     case 301:
     case 302:
@@ -29,7 +29,7 @@ export const iconHelper = (id: number, isDay: boolean): string => {
     case 521:
     case 522:
     case 531:
-      return '#rain2';
+      return 'rain2';
     case 200:
     case 201:
     case 202:
@@ -40,7 +40,7 @@ export const iconHelper = (id: number, isDay: boolean): string => {
     case 230:
     case 231:
     case 232:
-      return '#thunderstorm';
+      return 'thunderstorm';
     case 511:
     case 600:
     case 601:
@@ -53,7 +53,7 @@ export const iconHelper = (id: number, isDay: boolean): string => {
     case 620:
     case 621:
     case 622:
-      return '#snow';
+      return 'snow';
     case 701:
     case 711:
     case 721:
@@ -64,9 +64,9 @@ export const iconHelper = (id: number, isDay: boolean): string => {
     case 762:
     case 771:
     case 781:
-      return '#mist';
+      return 'mist';
     default:
-      return '#logo';
+      return 'logo';
   }
 
 };
