@@ -2,8 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { LocationService } from '../../services/location.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { map, filter, distinctUntilChanged, debounceTime } from 'rxjs/operators';
-import { Subscription } from 'rxjs';
+import { map, filter, distinctUntilChanged, debounceTime, startWith } from 'rxjs/operators';
+import { Observable, Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-search',
@@ -13,6 +13,8 @@ import { Subscription } from 'rxjs';
 
 export class SearchComponent implements OnInit, OnDestroy {
     public city = new FormControl('');
+    public options: string[] = ['One', 'Two', 'Three'];
+    public filteredOptions: Observable<string[]>;
 
     private subscription: Subscription;
 
@@ -24,6 +26,12 @@ export class SearchComponent implements OnInit, OnDestroy {
     }
 
     ngOnInit() {
+        this.route.queryParams.subscribe((data: any) => {
+            data.city
+                ? this.updateСity(data.city)
+                : this.getLocation();
+        });
+
         this.subscription = this.city.valueChanges.pipe(
             map((value: string) => value.trim()),
             filter((value: string) => !!value.length),
@@ -34,11 +42,11 @@ export class SearchComponent implements OnInit, OnDestroy {
             this.router.navigate([], {queryParams: {city: value}});
         });
 
-        this.route.queryParams.subscribe((data: any) => {
-            data.city
-                ? this.updateСity(data.city)
-                : this.getLocation();
-        });
+        this.filteredOptions = this.city.valueChanges
+            .pipe(
+                startWith(''),
+                map(value => this._filter(value))
+            );
     }
 
     ngOnDestroy() {
@@ -55,5 +63,11 @@ export class SearchComponent implements OnInit, OnDestroy {
 
     private updateСity(cityValue: string): void {
         this.city.setValue(cityValue);
+    }
+
+    private _filter(value: string): string[] {
+        const filterValue = value.toLowerCase();
+
+        return this.options.filter(option => option.toLowerCase().includes(filterValue));
     }
 }

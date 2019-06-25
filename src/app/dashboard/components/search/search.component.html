@@ -1,7 +1,13 @@
 <div class="dashboard-search">
     <div class="dashboard-search__input">
-            <input class="dashboard-search__field" type="text"
-                   [class.dashboard-search__field--filled]="city.value.trim()" [formControl]="city">
+        <mat-form-field>
+            <input class="dashboard-search__field" type="text" matInput [class.dashboard-search__field--filled]="city.value.trim()" [formControl]="city" [matAutocomplete]="auto">
+            <mat-autocomplete class="dashboard-search__autocomplete" #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredOptions | async" [value]="option">
+                    {{option}}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
         <label class="dashboard-search__label">
             <div class="dashboard-search__label-content">City</div>
         </label>
